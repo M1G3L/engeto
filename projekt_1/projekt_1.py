@@ -55,7 +55,7 @@ def display_word_lengths(word_count: dict):
     # Print each length and its count
     for length, count in word_count.items():
         stars = '*' * count
-        print(f"{length:>3}|{stars:<13}|{count}")    
+        print(f"{length:>3}|{stars:<20}|{count}")    
 
 def welcome(usr:str):
     separator()
