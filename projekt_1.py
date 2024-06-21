@@ -15,16 +15,16 @@ def separator():
 def count_words(text:str):
     return len(text.split())
 
-def count_title_cased_words(text:str):
+def count_title_cased_words(text:str) -> int:
     return len([word for word in text.split() if word.istitle()])
 
-def count_uppper_cased_words(text:str):
+def count_uppper_cased_words(text:str) -> int:
     return len([word for word in text.split() if not word[0].isdigit() and word.isupper()])
 
-def count_lower_cased_words(text:str):
+def count_lower_cased_words(text:str) -> int:
     return len([word for word in text.split() if word.islower()])
 
-def count_numeric_words(text:str):
+def count_numeric_words(text:str) -> int:
     return len([word for word in text.split() if word.isdigit()])
 
 def count_numeric_words_value(text:str) -> int:
@@ -37,7 +37,6 @@ def get_words_lengths(text:str) -> dict:
     word_count = {}
     for word in text.split():
       length = len(word)
-      print (word, length)
       if length in word_count:
           word_count[length] += 1
       else:
@@ -63,7 +62,7 @@ def welcome(usr:str):
     print(f"Welcome to the app, {usr}")
     print(f"We have 3 texts to be analyzed.")
 
-def login(username:str, password:str):
+def login(username:str, password:str) -> bool:
     if username in users:
         if users[username] == password:
             return True
