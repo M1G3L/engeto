@@ -22,7 +22,7 @@ def count_uppper_cased_words(text:str) -> int:
     return len([word for word in text.split() if not word[0].isdigit() and word.isupper()])
 
 def count_lower_cased_words(text:str) -> int:
-    return len([word for word in text.split() if word.islower()])
+    return len([word for word in text.split() if not word[0].isdigit() and word.islower()])
 
 def count_numeric_words(text:str) -> int:
     return len([word for word in text.split() if word.isdigit()])
@@ -48,9 +48,9 @@ def get_words_lengths(text:str) -> dict:
 
 def display_word_lengths(word_count: dict):
     # Print the header
-    print("----------------------------------------")
+    separator()
     print("LEN|  OCCURENCES  |NR.")
-    print("----------------------------------------")
+    separator()
     
     # Print each length and its count
     for length, count in word_count.items():
@@ -79,26 +79,31 @@ user_state=login(username, password)
 if user_state:
     welcome(username)
     separator()
-    text_choice = int(input("Enter a number btw. 1 and 3 to select:"))
+    text_choice = int(input(f"Enter a number btw. 1 and {len(texts)} to select:"))
     separator()
 
-    text = (texts[text_choice-1])
-    words=count_words(text)
-    title_cased_words = count_title_cased_words(text)
-    uppper_cased_words = count_uppper_cased_words(text)
-    lower_cased_words = count_lower_cased_words(text)
-    numeric_words = count_numeric_words(text)
+    while text_choice not in range(1,len(texts)+1):
+        text_choice = int(input(f"Enter a number btw. 1 and {len(texts)} to select:"))
+        separator()
+    else:
+        text = (texts[text_choice-1])
+    
+        words=count_words(text)
+        title_cased_words = count_title_cased_words(text)
+        uppper_cased_words = count_uppper_cased_words(text)
+        lower_cased_words = count_lower_cased_words(text)
+        numeric_words = count_numeric_words(text)
 
-    print(f"There are {words} in the selected text.")           # print(words)
-    print(f"There are {title_cased_words} titlecase words.")    # print(title_cased_words)
-    print(f"There are {uppper_cased_words} uppercase words.")   # print(uppper_cased_words)
-    print(f"There are {lower_cased_words} lowercase words.")    # print(lower_cased_words)
-    print(f"There are {numeric_words} numeric strings.")        # print(numeric_words)
-    print(f"The sum of all the numbers {count_numeric_words_value(text)}") # print(f"The total number of numeric values is {count_numeric_words_value(text)}")
+        print(f"There are {words} in the selected text.")           # print(words)
+        print(f"There are {title_cased_words} titlecase words.")    # print(title_cased_words)
+        print(f"There are {uppper_cased_words} uppercase words.")   # print(uppper_cased_words)
+        print(f"There are {lower_cased_words} lowercase words.")    # print(lower_cased_words)
+        print(f"There are {numeric_words} numeric strings.")        # print(numeric_words)
+        print(f"The sum of all the numbers {count_numeric_words_value(text)}") # print(f"The total number of numeric values is {count_numeric_words_value(text)}")
 
-    text = clean_text(text)
-    words_lengths = get_words_lengths(text)
-    display_word_lengths(words_lengths)
+        text = clean_text(text)
+        words_lengths = get_words_lengths(text)
+        display_word_lengths(words_lengths)
     
 else:
     print ("unregistred user, terminating the program..")
