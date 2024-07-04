@@ -16,8 +16,8 @@ def count_words(text:str):
     return len(text.split())
 
 def count_title_cased_words(text:str) -> int:
-    return len([word for word in text.split() if not word[0].isdigit() and word.istitle()])
-
+    return len([word for word in text.split() if re.sub(r'[^A-Z\s]', '', word[0])]) 
+    
 def count_uppper_cased_words(text:str) -> int:
     return len([word for word in text.split() if not word[0].isdigit() and word.isupper()])
 
