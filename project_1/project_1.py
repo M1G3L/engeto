@@ -6,8 +6,8 @@ discord: michalvetr
 """
 
 import re
-from projekt_1_data import users
-from projekt_1_data import TEXTS as texts
+from project_1.project_1_data import users
+from project_1.project_1_data import TEXTS as texts
 
 def separator():
     print("-" * 40)
