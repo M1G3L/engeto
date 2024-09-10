@@ -1,7 +1,6 @@
 """
 This file contains functions for the bulls and cows game.
 The functions are imported in main.py and used there.
-The functions are: welcome, find_bulls, find_cows, get_random_int, display_bulls_cows, get_user_input
 """
 
 import random as rnd
@@ -19,33 +18,8 @@ def welcome():
         f"Let's play a bulls and cows game.\n{sep}\n"
     )
 
-# this function finds bulls in the input number
-def find_bulls(random_number:int, input_number:int)->int:
-    
-    bulls = 0
-    index_to_remove = []
-    digit_to_remove = []
-
-    for i,digit in enumerate(str(input_number)):
-        if digit == str(random_number)[i]:
-            bulls += 1
-            index_to_remove.append(i)
-            digit_to_remove.append(int(digit))
-    
-    return bulls, index_to_remove, digit_to_remove
-
-# this function finds cows in rest of the input number
-def find_cows(random_stack:list, input_stack:list)->int:
-    
-    cows = 0
-
-    for digit in input_stack:
-        if digit in random_stack:
-            cows += 1
-    return cows
-
 # this function generates random number to guess
-def get_random_int()->int:
+def get_random_int() -> int:
     return rnd.randint(1000, 9999)
 
 # this function displays bulls and cows
@@ -56,7 +30,7 @@ def display_bulls_cows(bulls:int, cows:int):
     return f"{bulls} {bull_str}, {cows} {cow_str}"
 
 # this function gets user input
-def get_user_input()->int:
+def get_user_input() -> int:
     while True:
         try:
             user_input = int(input(">>> "))
@@ -78,27 +52,19 @@ def evaluate_performance(guess_count):
     else:
         return "That's not so good!"
 
-# this function combines search functions to obtain bulls and cows 
-def bull_or_cow(random_number:int, input_number:int)->int:
-    
-    input_stack = [ int(digit) for digit in str(input_number) ]
-    random_stack = [ int(digit) for digit in str(random_number) ]  
-   
-    # find bulls
-    bulls, index_to_remove, digit_to_remove = find_bulls(random_number, input_number)
+# this function finds bulls and cows
+def find_bulls_and_cows(random_number: int, input_number: int) -> dict:
+    bulls = 0
+    input_set = set()
+    random_set = set()
 
-    # remove bulls from input stack
-    for i in index_to_remove:
-        input_stack.remove(int(str(input_number)[i]))
-    
-    # remove bulls from random stack
-    for digit in digit_to_remove:
-        random_stack.remove(digit)
-    
-    # remove duplicates
-    input_stack = list(set(input_stack))
+    for i, digit in enumerate(str(input_number)):
+        if digit == str(random_number)[i]:
+            bulls += 1
+        else:
+            input_set.add(digit)
+            random_set.add(str(random_number)[i])
 
-    # find cows
-    cows = find_cows(random_stack, input_stack)
-    
-    return [bulls, cows]
+    cows = len(input_set.intersection(random_set))
+    result = {"bulls": bulls, "cows": cows}
+    return result
