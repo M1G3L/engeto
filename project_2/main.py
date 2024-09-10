@@ -6,7 +6,7 @@ discord: michalvetr
 """
 
 import time
-from functions import welcome, separator, get_random_int, display_bulls_cows, get_user_input, bull_or_cow, evaluate_performance
+from functions import welcome, separator, get_random_int, display_bulls_cows, get_user_input, evaluate_performance, find_bulls_and_cows
 
 
 # main function
@@ -25,9 +25,12 @@ if __name__ == "__main__":
         
         input_number = get_user_input()
         
-        result = bull_or_cow(random_number, input_number)
-        if result[0] != 4:
-            print(display_bulls_cows(result[0], result[1]))
+        #result = bull_or_cow(random_number, input_number)
+        result = find_bulls_and_cows(random_number, input_number)
+        # get the result from dictionary
+        
+        if result["bulls"] != 4:
+            print(display_bulls_cows(result["bulls"], result["cows"]))
             print(separator())
         guess_count += 1
     
