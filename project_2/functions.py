@@ -18,9 +18,18 @@ def welcome():
         f"Let's play a bulls and cows game.\n{sep}\n"
     )
 
+def is_valid_number(number: int) -> bool:
+    return len(str(number)) == len(set(str(number)))
+
 # this function generates random number to guess
 def get_random_int() -> int:
-    return rnd.randint(1000, 9999)
+    
+    digit = rnd.randint(1000, 9999)
+    
+    while not is_valid_number(digit):
+        digit = rnd.randint(1000, 9999)
+        
+    return digit
 
 # this function displays bulls and cows
 def display_bulls_cows(bulls:int, cows:int):
@@ -36,6 +45,9 @@ def get_user_input() -> int:
             user_input = int(input(">>> "))
             if user_input < 1000 or user_input > 9999:
                 print("Number must be between 1000 and 9999.")
+                continue
+            elif not is_valid_number(user_input):
+                print("Number must contain unique digits.")
                 continue
             return user_input
         except ValueError:
