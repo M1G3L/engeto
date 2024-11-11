@@ -3,7 +3,7 @@
 The script is designed to scrape structured data from an HTML page and output it in a structured format (CSV). The CSV file could be usable for further analysis, allowing you to view the election data in a spreadsheet program like Excel or Google Sheets.
 
 ## Installation
-Use the package manager [pip] (https://pip.pypa.io/en/stable/) to install necessery requirements.
+Use the package manager [pip] (https://pip.pypa.io/en/stable/) to install necessary requirements.
 
 ```bash
 pip install -r .\requirements.txt
