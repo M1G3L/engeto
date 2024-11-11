@@ -15,7 +15,7 @@ The main.py script is taking two arguments:
 2. Output file in csv format
 
 ```bash
-python main.py "<URL>" <output_file>
+python main.py \""<URL>\"" "<output_file>"
 ```
 
 ## Example
