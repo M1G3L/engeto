@@ -1,8 +1,8 @@
-# Project 3 - Election scraper
+# Project 3 - Elections scraper
 
 The script is designed to scrape structured data from an HTML page and output it in a structured format (CSV). The CSV file could be usable for further analysis, allowing you to view the election data in a spreadsheet program like Excel or Google Sheets.
 
-## Instalation
+## Installation
 Use the package manager [pip] (https://pip.pypa.io/en/stable/) to install necessery requirements.
 
 ```bash
@@ -34,4 +34,3 @@ code,location,registered,envelopes,valid,Občanská demokratická strana,Řád n
 530743,Bílikovice,170,121,118,7,0,0,15,0,8,18,0,2,0,0,0,3,0,0,2,47,1,0,6,0,0,0,0,9,0
 532380,Blažejovice,96,80,77,6,0,0,5,0,3,11,0,0,3,0,0,5,1,0,0,29,0,0,6,0,0,0,0,8,0
 532096,Borovnice,73,54,53,2,0,0,2,0,4,4,1,0,1,0,0,3,0,0,1,29,0,0,5,0,0,0,0,1,0
-```
